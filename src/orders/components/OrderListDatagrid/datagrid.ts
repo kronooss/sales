@@ -70,7 +70,7 @@ export const orderListStaticColumnAdapter = (
     {
       id: "actions",
       title: intl.formatMessage(columnsMessages.actions),
-      width: 150,
+      width: 1000,
     },
   ].map(column => ({
     ...column,
@@ -129,10 +129,10 @@ export const useGetCellContent = ({ columns, orders }: GetCellContentProps) => {
 export function getActionsCellContent(
   rowData: RelayToFlat<OrderListQuery["orders"]>[number],
 ) {
-  // if (!rowData || !rowData?.metadata || !rowData?.metadata.length) return;
-  // const label_url = rowData.metadata.find(item => item.key === 'label_url')?.value;
-  // return readonlyImageCell(label_url ? label_url : "");
-  return readonlyImageCell("1111");
+  var label_url = ""
+  if (!rowData || !rowData?.metadata || !rowData?.metadata.length) label_url = "";
+  else label_url = rowData.metadata.find(item => item.key === 'label_url')?.value;
+  return readonlyImageCell(label_url ? label_url : "");
 }
 
 export function getDateCellContent(

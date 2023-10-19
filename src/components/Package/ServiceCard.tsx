@@ -86,72 +86,73 @@ export const ServiceCard: React.FC<ServiceCardProps> = ({
                   </Text>
                 </DashboardCard.Content>
               ) : (
-                <Table>
-                  <TableHead>
-                    <TableRowLink>
-                      <TableCell style={{ paddingLeft: vars.spacing[6] }}>
-                        <Text variant="caption" color="textNeutralSubdued">
-                          <FormattedMessage
-                            id="nudPsY5"
-                            defaultMessage="Select Service"
-                            description="Select Service"
-                          />
-                        </Text>
-                      </TableCell>
-                      <TableCell style={{ paddingLeft: vars.spacing[6] }}>
-                        <Text variant="caption" color="textNeutralSubdued">
-                          <FormattedMessage
-                            id="nudPsY6"
-                            defaultMessage="Service Name"
-                            description="Service Name"
-                          />
-                        </Text>
-                      </TableCell>
-                      <TableCell style={{ paddingLeft: vars.spacing[6] }}>
-                        <Text variant="caption" color="textNeutralSubdued">
-                          <FormattedMessage
-                            id="nudPsY8"
-                            defaultMessage="Cost ($)"
-                            description="Cost ($)"
-                          />
-                        </Text>
-                      </TableCell>
-                      
-                    </TableRowLink>
-                  </TableHead>
-                  <TableBody>
-                    <RadioGroup
-                      value={serviceType}
-                      onValueChange={setServiceType}
-                      display="flex"
-                      flexDirection="column"
-                      gap={3}
-                    >
-                      {data.map((field, fieldIndex) => (
-                        <TableRowLink data-test-id="field" key={fieldIndex}>
-                          <TableCell style={{ paddingLeft: vars.spacing[6] }}>
-                            <RadioGroup.Item
-                              id={`${fieldIndex}-isPublished-true`}
-                              value={field.name}
-                              name="isPublished"
-                            >
-                            </RadioGroup.Item>
-                          </TableCell>
-                          <TableCell style={{ paddingLeft: vars.spacing[6] }}>
-                            <Typography variant="h6" component="h2">
-                              {field.name}
-                            </Typography>
-                          </TableCell>
-                          <TableCell style={{ paddingLeft: vars.spacing[6] }}>
-                            <Typography variant="h6" component="h2">
-                              {field.amount}
-                            </Typography>
-                          </TableCell>
-                        </TableRowLink>
-                      ))}
-                    </RadioGroup>
-                  </TableBody>
-                </Table>
+                <RadioGroup
+                  value={serviceType}
+                  onValueChange={setServiceType}
+                  display="flex"
+                  
+                  flexDirection="column"
+                  gap={3}
+                >
+                  <Table>
+                    <TableHead>
+                      <TableRowLink>
+                        <TableCell style={{ paddingLeft: vars.spacing[6] }}>
+                          <Text variant="caption" color="textNeutralSubdued">
+                            <FormattedMessage
+                              id="nudPsY5"
+                              defaultMessage="Select Service"
+                              description="Select Service"
+                            />
+                          </Text>
+                        </TableCell>
+                        <TableCell style={{ paddingLeft: vars.spacing[6] }}>
+                          <Text variant="caption" color="textNeutralSubdued">
+                            <FormattedMessage
+                              id="nudPsY6"
+                              defaultMessage="Service Name"
+                              description="Service Name"
+                            />
+                          </Text>
+                        </TableCell>
+                        <TableCell style={{ paddingLeft: vars.spacing[6] }}>
+                          <Text variant="caption" color="textNeutralSubdued">
+                            <FormattedMessage
+                              id="nudPsY8"
+                              defaultMessage="Cost ($)"
+                              description="Cost ($)"
+                            />
+                          </Text>
+                        </TableCell>
+                        
+                      </TableRowLink>
+                    </TableHead>
+                    <TableBody>
+                        {data.map((field, fieldIndex) => (
+                          <TableRowLink data-test-id="field" key={fieldIndex}>
+                            <TableCell style={{ paddingLeft: vars.spacing[6] }}>
+                              <RadioGroup.Item
+                                id={`${fieldIndex}-isPublished-true`}
+                                value={field.name}
+                                name="isPublished"
+                              >
+                              </RadioGroup.Item>
+                            </TableCell>
+                            <TableCell style={{ paddingLeft: vars.spacing[6] }}>
+                              <Typography variant="h6" component="h2">
+                                {field.name}
+                              </Typography>
+                            </TableCell>
+                            <TableCell style={{ paddingLeft: vars.spacing[6] }}>
+                              <Typography variant="h6" component="h2">
+                                {field.amount}
+                              </Typography>
+                            </TableCell>
+                          </TableRowLink>
+                        ))}
+                    </TableBody>
+                  </Table>
+                </RadioGroup>
               )}
               <DashboardCard.Content marginTop={2} paddingLeft={6}>
                 <Button
