@@ -145,11 +145,12 @@ const OrderDetailsPage: React.FC<OrderDetailsPageProps> = props => {
   const [serviceType, setServiceType] = useState("");
   
   const handleSubmit = async (data: MetadataIdSchema) => {
-    console.log("Saved");
+    const amount = services.find(item => item.name === serviceType).amount;
     const data1 = {
       "lines": packages,
       "packagingType": packageType,
       "serviceType": serviceType,
+      "amount": amount,
       "order_token": order?.id
     }
     axios.post("http://192.168.118.227:8000/webhooks/update_order", data1).then(res => {
